@@ -91,6 +91,7 @@ async function runOperation (runner, ti, handle) {
     var output
 
     try {
+      console.log('running with iterThrough')
       // await callbacks.asyncBeforeYield(ti) // TODO
       output = oper.next(prev)
     } catch (err) {                                                             // REJECTED
@@ -107,6 +108,7 @@ async function runOperation (runner, ti, handle) {
 
   // Promise Function
   async function syncThrough () {
+    console.log('running with syncThrough')
     return oper
       .then(val => handle.success.bind(null, ti, val))                          // RESOLVED
       .catch(err => handle.error.bind(null, ti, err))                           // REJECTED
